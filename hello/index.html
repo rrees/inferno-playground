@@ -10,6 +10,8 @@
 
     <div id="app"></div>
 
+    <div id="app2"></div>
+
     <script src="https://unpkg.com/inferno@1.2.2/dist/inferno.js"></script>
     <script src="https://unpkg.com/inferno@1.2.2/dist/inferno-hyperscript.js"></script>
 
@@ -18,10 +20,11 @@
       const {render, h} = window.Inferno;
 
       function MyApp(props) {
-        return h('p', {}, 'Hello default world');
+        return h('p', {}, props && props.message ? props.message : 'Hello default world');
       }
 
       render(MyApp(), document.getElementById('app'));
+      render(MyApp({message: "Hello world"}), document.getElementById('app2'));
     </script>
   </body>
 </html>
