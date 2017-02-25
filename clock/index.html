@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clock - Inferno</title>
+    <meta charset="utf-8">
+
+  </head>
+
+  <body>
+
+    <h1>Clock</h1>
+
+    <div id="app"></div>
+
+
+    <script src="https://unpkg.com/inferno@1.2.2/dist/inferno.js"></script>
+    <script src="https://unpkg.com/inferno@1.2.2/dist/inferno-hyperscript.js"></script>
+
+    <script>
+
+      const {render, h} = window.Inferno;
+
+      const clockData = {
+        time: new Date()
+      };
+
+      function MyClock(props) {
+        console.log(props);
+        return h('p', {}, props.time && props.time.toString());
+      }
+
+      function renderClock(props) {
+        render(MyClock(props), document.getElementById('app'));
+      }
+
+      renderClock(clockData);
+
+      setInterval(() => {
+        clockData.time = new Date();
+        renderClock(clockData);
+      }, 1000);
+
+    </script>
+  </body>
+</html>
