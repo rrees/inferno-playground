@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Automatic Counter - Inferno</title>
+    <meta charset="utf-8">
+
+  </head>
+
+  <body>
+
+    <h1>Automatic counter</h1>
+
+    <div id="app"></div>
+
+
+    <script src="https://unpkg.com/inferno@1.2.2/dist/inferno.js"></script>
+    <script src="https://unpkg.com/inferno@1.2.2/dist/inferno-hyperscript.js"></script>
+
+    <script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
+
+    <script>
+
+      function counter(state, action) {
+        if(state === undefined) {
+          return 0;
+        }
+        switch(action.type) {
+          case 'INCREMENT':
+            return state + 1;
+          default:
+            return state;
+        }
+      }
+
+      const store = Redux.createStore(counter);
+
+      const {render, h} = window.Inferno;
+
+      function MyCounter(props) {
+        console.log(props);
+        return h('p', {}, props.toString());
+      }
+
+      function appRender() {
+        render(MyCounter(store.getState()), document.getElementById('app'));
+      }
+
+      store.subscribe(appRender);
+
+      setInterval(() => {
+        store.dispatch({type: "INCREMENT"});
+      }, 1000);
+
+    </script>
+  </body>
+</html>
