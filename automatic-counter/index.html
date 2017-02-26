@@ -45,6 +45,8 @@
         render(MyCounter(store.getState()), document.getElementById('app'));
       }
 
+      appRender();
+
       store.subscribe(appRender);
 
       setInterval(() => {
