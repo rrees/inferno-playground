@@ -40,14 +40,14 @@
         //console.log(props);
         return h('div', {},
           [
-            h('p', {}, props.toString()),
-            h('button', {onclick: (e) => store.dispatch({type: "INCREMENT"})}, 'Add')
+            h('p', {}, props.store.getState().toString()),
+            h('button', {onclick: (e) => props.store.dispatch({type: "INCREMENT"})}, 'Add')
           ]
         );
       }
 
       function appRender() {
-        render(MyCounter(store.getState()), document.getElementById('app'));
+        render(MyCounter({store: store}), document.getElementById('app'));
       }
 
       appRender();
