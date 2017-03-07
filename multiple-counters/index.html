@@ -45,14 +45,14 @@
         );
       }
 
-      function appRender(selector, store) {
-        render(MyCounter({store: store}), document.querySelector(selector));
+      function appRender(el, store) {
+        render(MyCounter({store: store}), el);
       }
 
-      ["1", "2", "3"].forEach((id) => {
+      document.body.querySelectorAll(".counter").forEach((el) => {
         const store = Redux.createStore(counter);
 
-        const counterRender = () => appRender("#counter" + id, store);
+        const counterRender = () => appRender(el, store);
 
         counterRender();
 
