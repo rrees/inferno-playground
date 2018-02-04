@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "parcel-bundler": "^1.5.1"
+  },
+  "dependencies": {
+    "inferno": "^3.10.1",
+    "inferno-hyperscript": "^3.10.1",
+    "rrees-js-random": "^0.0.2"
+  }
+}
